@@ -19,8 +19,11 @@
 // Output: [0,1]
 
 var twoSum = function(nums, target) {
+    // Start comparing all integers starting with [0]
     for (i = 0; i < nums.length; i++) {
+        // Start comparing all other integers starting with [1]
         for (j = i + 1; j < nums.length; j++) {
+            // Run the comparison
             if ((nums[i] + nums[j]) == target) {
                 // Change all instances of console.log() to return when submitting to Leetcode
                 console.log([i, j]);
