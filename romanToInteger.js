@@ -36,5 +36,61 @@
 // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 var romanToInt = function(s) {
-    
+    // Declare initial value of Roman numeral to be added to later
+    var value = 0;
+
+    // Initial for loop to add values based on characters in the string
+    for (i = 0; i < s.length; i++) {
+        switch (s.charAt(i)) {
+            case "I":
+                value += 1;
+                break;
+            case "V":
+                value += 5;
+                break;
+            case "X":
+                value += 10;
+                break;
+            case "L":
+                value += 50;
+                break;
+            case "C":
+                value += 100;
+                break;
+            case "D":
+                value += 500;
+                break;
+            case "M":
+                value += 1000;
+                break;
+            default:
+                value = 0;
+                console.log("Not a Roman Numeral");
+                break;
+        }
+    }
+
+    // Series of if statements that subtract from the value if smaller Roman numerals come before larger Roman numerals
+    if (s.match("IV") || s.match("IX")) {
+        value -= 2;
+    }
+    if (s.match("XL") || s.match("XC")) {
+        value -= 20;
+    }
+    if (s.match("CD") || s.match("CM")) {
+        value -= 200;
+    }
+
+    // Change console.log to return when submitting to Leetcode
+    console.log(value);
 };
+
+romanToInt("III");
+romanToInt("XIV");
+romanToInt("MCMXCIV");
+
+/* 
+Runtime: 115 ms, beating only 34.67% of JavaScript users
+Memory: 48.03 MB, beating only 29.55% of JavaScript users
+Overall: slow and a heavy workload, but it works
+*/
