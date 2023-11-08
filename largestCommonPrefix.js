@@ -13,21 +13,26 @@
 // Explanation: There is no common prefix among the input strings.
 
 var longestCommonPrefix = function(strs) {
-    // Establish initial array of strings
-    // var strs = [];
-
     // Establish empty string to be concatenated when we find matches
     var prefix = "";
 
-    prefix = strs[0].substr(0,1);
-    for (i = 0; i < strs.length; i++) {
-        // if () {
-
-        // } else {
-
-        // }
+    // Run logic for each string to match each string's first letter(s) and add to prefix
+    for (i = 0; i < strs[0].length; i++) {
+        if (strs.every(str => str[i] === strs[0][i])) {
+            prefix += strs[0][i];
+        } else {
+            break;
+        }
     }
+    console.log(prefix);
 };
 
 longestCommonPrefix(["flower", "flow", "flight"]); // Should return "fl"
 longestCommonPrefix(["dog", "racecar", "car"]); // Should return ""
+
+/* 
+I had to get help with this one.
+Runtime: 48 ms, beating 86.17% of JavaScript users
+Memory: 42.42 MB, beating only 48.29% of JavaScript users
+Overall: fast, but has a heavy workload
+*/
